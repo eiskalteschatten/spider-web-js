@@ -41,19 +41,23 @@ function drawSpiderWeb() {
     }
 
     function drawBetweenBranches() {
-      const radius = 60;
+      const radius = 80;
       
       for (let radiusFromOrigin = radius; radiusFromOrigin < distanceToEdge; radiusFromOrigin += radius) {
         for (let theta = 0; theta < 360; theta += angleOfSections) {
-          const radian = getRadian(theta);
-          const pointX = radiusFromOrigin * Math.cos(radian);
-          const pointY = radiusFromOrigin * Math.sin(radian);
+          const startRadian = getRadian(theta);
+          const startX = radiusFromOrigin * Math.cos(startRadian);
+          const startY = radiusFromOrigin * Math.sin(startRadian);
+          
+          const endRadian = getRadian(theta + angleOfSections);
+          const endX = radiusFromOrigin * Math.cos(endRadian);
+          const endY = radiusFromOrigin * Math.sin(endRadian);
 
           ctx.beginPath();
           ctx.setTransform(1,0,0,1, centerX, centerY);
-          ctx.arc(pointX, pointY, centerCircleSize, 0, twoPi);
-          ctx.fillStyle = 'yellow';
-          ctx.fill();
+          ctx.bezierCurveTo(startX, startY, 0, 0, endX, endY);
+          ctx.strokeStyle = fillColor;
+          ctx.stroke();
           ctx.closePath();
         }
       }
