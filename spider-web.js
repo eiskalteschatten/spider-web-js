@@ -22,8 +22,12 @@ function drawSpiderWeb() {
 
     const getRadian = theta => twoPi * theta / 360;
     
+    ctx.strokeStyle = fillColor;
+    ctx.setLineDash(lineDash);
+    
     function drawMainBranches() {
       for (let theta = 0; theta < 360; theta += angleOfSections) {
+        console.log('x', angleOfSections, theta);
         const radian = getRadian(theta);
         const x = Math.cos(radian);
         const y = Math.sin(radian) * -1;
@@ -31,10 +35,8 @@ function drawSpiderWeb() {
         ctx.beginPath();
         ctx.setTransform(1,0,0,1, centerX, centerY);
         ctx.rotate(radian);
-        ctx.setLineDash(lineDash);
         ctx.moveTo(centerX, centerY);
         ctx.lineTo(x, y);
-        ctx.strokeStyle = fillColor;
         ctx.stroke();
         ctx.closePath();
       }
@@ -45,6 +47,7 @@ function drawSpiderWeb() {
       
       for (let radiusFromOrigin = radius; radiusFromOrigin < distanceToEdge; radiusFromOrigin += radius) {
         for (let theta = 0; theta < 360; theta += angleOfSections) {
+          console.log('q',angleOfSections, theta);
           const startRadian = getRadian(theta);
           const startX = radiusFromOrigin * Math.cos(startRadian);
           const startY = radiusFromOrigin * Math.sin(startRadian);
@@ -56,7 +59,6 @@ function drawSpiderWeb() {
           ctx.beginPath();
           ctx.setTransform(1,0,0,1, centerX, centerY);
           ctx.bezierCurveTo(startX, startY, 0, 0, endX, endY);
-          ctx.strokeStyle = fillColor;
           ctx.stroke();
           ctx.closePath();
         }
