@@ -6,7 +6,6 @@ function drawSpiderWeb() {
   }
 
   const isDarkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-  const fillColor = isDarkMode ? 'white' : 'black';
   const centerX = canvas.width / 2;
   const centerY = canvas.height / 2;
   const distanceToEdge = Math.min(centerX, centerY)
@@ -21,7 +20,7 @@ function drawSpiderWeb() {
   function drawBranches() {
     const radius = 90;
 
-    ctx.strokeStyle = fillColor;
+    ctx.strokeStyle = isDarkMode ? 'white' : 'black';
     ctx.setLineDash([2, 5]);
 
     for (let theta = 0; theta < 360; theta += angleOfSections) {
