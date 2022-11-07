@@ -1,4 +1,7 @@
 function drawSpiderWeb() {
+  const isDarkMode =window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const fillColor = isDarkMode ? 'white' : 'black';
+
   const canvas = document.getElementById('spiderWebCanvas');
   
   if (canvas) {
@@ -10,7 +13,7 @@ function drawSpiderWeb() {
     const twoPi = Math.PI * 2;
     const centerCircleSize = 8;
     
-    ctx.fillStyle = 'black';
+    ctx.fillStyle = fillColor;
     ctx.arc(centerX, centerY, centerCircleSize, 0, twoPi);
     ctx.fill();
     
@@ -28,6 +31,7 @@ function drawSpiderWeb() {
       ctx.setLineDash([2, 5]);
       ctx.moveTo(centerX, centerY);
       ctx.lineTo(x, y);
+      ctx.strokeStyle = fillColor;
       ctx.stroke();
     }
   }
