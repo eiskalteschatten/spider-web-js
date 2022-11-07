@@ -21,7 +21,7 @@ function drawSpiderWeb() {
     const radius = 90;
 
     ctx.strokeStyle = isDarkMode ? 'white' : 'black';
-    ctx.setLineDash([2, 5]);
+    ctx.setLineDash([2, 4]);
 
     for (let theta = 0; theta < 360; theta += angleOfSections) {
       const radian = getRadian(theta);
