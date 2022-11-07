@@ -19,10 +19,12 @@ function drawSpiderWeb() {
     const numberOfMainBranches = 8;
     const angleOfSections = 360 / numberOfMainBranches;
     const lineDash = [2, 5];
+
+    const getRadian = theta => twoPi * theta / 360;
     
     function drawMainBranches() {
       for (let theta = 0; theta < 360; theta += angleOfSections) {
-        const radian = twoPi * theta / 360;
+        const radian = getRadian(theta);
         const x = Math.cos(radian);
         const y = Math.sin(radian) * -1;
 
@@ -43,7 +45,7 @@ function drawSpiderWeb() {
       
       for (let radiusFromOrigin = radius; radiusFromOrigin < distanceToEdge; radiusFromOrigin += radius) {
         for (let theta = 0; theta < 360; theta += angleOfSections) {
-          const radian = twoPi * theta / 360;
+          const radian = getRadian(theta);
           const pointX = radiusFromOrigin * Math.cos(radian);
           const pointY = radiusFromOrigin * Math.sin(radian);
 
