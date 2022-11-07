@@ -11,17 +11,11 @@ function drawSpiderWeb() {
   const centerX = canvas.width / 2;
   const centerY = canvas.height / 2;
   const distanceToEdge = Math.min(centerX, centerY)
-  const centerCircleSize = 4;
   
   const ctx = canvas.getContext('2d');
       
-  ctx.arc(centerX, centerY, centerCircleSize, 0, twoPi);
-  ctx.fillStyle = fillColor;
-  ctx.fill();
-  
   const numberOfMainBranches = 8;
   const angleOfSections = 360 / numberOfMainBranches;
-  const lineDash = [2, 5];
 
   const getRadian = theta => Math.PI * theta / 180;
   
@@ -29,7 +23,7 @@ function drawSpiderWeb() {
     const radius = 90;
 
     ctx.strokeStyle = fillColor;
-    ctx.setLineDash(lineDash);
+    ctx.setLineDash([2, 5]);
 
     for (let theta = 0; theta < 360; theta += angleOfSections) {
       const radian = getRadian(theta);
