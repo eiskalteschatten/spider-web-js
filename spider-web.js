@@ -7,7 +7,6 @@ function drawSpiderWeb() {
 
   const isDarkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
   const fillColor = isDarkMode ? 'white' : 'black';
-  const twoPi = Math.PI * 2;
   const centerX = canvas.width / 2;
   const centerY = canvas.height / 2;
   const distanceToEdge = Math.min(centerX, centerY)
