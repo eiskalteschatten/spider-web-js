@@ -23,7 +23,7 @@ function drawSpiderWeb() {
   const angleOfSections = 360 / numberOfMainBranches;
   const lineDash = [2, 5];
 
-  const getRadian = theta => twoPi * theta / 360;
+  const getRadian = theta => Math.PI * theta / 180;
   
   ctx.strokeStyle = fillColor;
   ctx.setLineDash(lineDash);
