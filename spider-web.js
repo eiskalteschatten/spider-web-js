@@ -1,6 +1,6 @@
 function drawSpiderWeb() {
   const canvas = document.getElementById('spiderWebCanvas');
-  
+
   if (!canvas) {
     throw new Error('No canvas found!');
   }
@@ -9,9 +9,9 @@ function drawSpiderWeb() {
   const centerX = canvas.width / 2;
   const centerY = canvas.height / 2;
   const distanceToEdge = Math.min(centerX, centerY)
-  
+
   const ctx = canvas.getContext('2d');
-      
+
   const numberOfMainBranches = 8;
   const twoPi = Math.PI * 2;
   const angleOfSections = twoPi / numberOfMainBranches;
@@ -34,11 +34,11 @@ function drawSpiderWeb() {
       for (let radiusFromOrigin = radius; radiusFromOrigin < distanceToEdge; radiusFromOrigin += radius) {
         const startX = radiusFromOrigin * Math.cos(radian);
         const startY = radiusFromOrigin * Math.sin(radian);
-        
+
         const endRadian = radian + angleOfSections;
         const endX = radiusFromOrigin * Math.cos(endRadian);
         const endY = radiusFromOrigin * Math.sin(endRadian);
-        
+
         ctx.beginPath();
         ctx.setTransform(1,0,0,1, centerX, centerY);
         ctx.bezierCurveTo(startX, startY, 0, 0, endX, endY);
