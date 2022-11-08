@@ -13,18 +13,16 @@ function drawSpiderWeb() {
   const ctx = canvas.getContext('2d');
       
   const numberOfMainBranches = 8;
-  const angleOfSections = 360 / numberOfMainBranches;
+  const twoPi = Math.PI * 2;
+  const angleOfSections = twoPi / numberOfMainBranches;
 
-  const getRadian = theta => Math.PI * theta / 180;
-  
   function drawBranches() {
     const radius = 90;
 
     ctx.strokeStyle = isDarkMode ? 'white' : 'black';
     ctx.setLineDash([2, 4]);
 
-    for (let theta = 0; theta < 360; theta += angleOfSections) {
-      const radian = getRadian(theta);
+    for (let radian = 0; radian < twoPi; radian += angleOfSections) {
       const x = Math.cos(radian);
       const y = Math.sin(radian);
       
@@ -40,7 +38,7 @@ function drawSpiderWeb() {
         const startX = radiusFromOrigin * x;
         const startY = radiusFromOrigin * y;
         
-        const endRadian = getRadian(theta + angleOfSections);
+        const endRadian = radian + angleOfSections;
         const endX = radiusFromOrigin * Math.cos(endRadian);
         const endY = radiusFromOrigin * Math.sin(endRadian);
         
