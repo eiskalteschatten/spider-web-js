@@ -23,20 +23,17 @@ function drawSpiderWeb() {
     ctx.setLineDash([2, 4]);
 
     for (let radian = 0; radian < twoPi; radian += angleOfSections) {
-      const x = Math.cos(radian);
-      const y = Math.sin(radian);
-      
       ctx.beginPath();
       ctx.setTransform(1,0,0,1, centerX, centerY);
       ctx.rotate(radian);
       ctx.moveTo(centerX, centerY);
-      ctx.lineTo(x, y);
+      ctx.lineTo(0, 0);
       ctx.stroke();
       ctx.closePath();
 
       for (let radiusFromOrigin = radius; radiusFromOrigin < distanceToEdge; radiusFromOrigin += radius) {
-        const startX = radiusFromOrigin * x;
-        const startY = radiusFromOrigin * y;
+        const startX = radiusFromOrigin * Math.cos(radian);
+        const startY = radiusFromOrigin * Math.sin(radian);
         
         const endRadian = radian + angleOfSections;
         const endX = radiusFromOrigin * Math.cos(endRadian);
